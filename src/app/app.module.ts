@@ -8,6 +8,7 @@ import {AlertModule} from 'ngx-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { CreateuserComponent } from './createuser/createuser.component';
+import { UpdateuserComponent } from './updateuser/updateuser.component';
 
 
 
@@ -16,7 +17,8 @@ import { CreateuserComponent } from './createuser/createuser.component';
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    CreateuserComponent
+    CreateuserComponent,
+    UpdateuserComponent
   ],
   imports: [
     BrowserModule,

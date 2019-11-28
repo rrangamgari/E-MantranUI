@@ -9,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { UpdateuserComponent } from './updateuser/updateuser.component';
+import { ListusersComponent } from './listusers/listusers.component';
 
 
 
@@ -18,7 +19,8 @@ import { UpdateuserComponent } from './updateuser/updateuser.component';
     HeaderComponent,
     LoginComponent,
     CreateuserComponent,
-    UpdateuserComponent
+    UpdateuserComponent,
+    ListusersComponent
   ],
   imports: [
     BrowserModule,

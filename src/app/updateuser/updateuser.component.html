@@ -15,20 +15,20 @@
 
 
         <div class="form-group">
-          <label for="firstUser1">First Name</label>
-          <input type="text" class="form-control" id="firstUser1" aria-describedby="firstnameHelp"
-                 placeholder="First Name">
+          <label for="firstname">First Name</label>
+          <input type="text" class="form-control" [name]="firstname" id="firstname" aria-describedby="firstnameHelp"
+                 placeholder="First Name" value="{{email}}">
         </div>
 
         <div class="form-group">
-          <label for="middleUser1">Middle Name</label>
-          <input type="text" class="form-control" id="middleUser1" aria-describedby="emailHelp"
+          <label for="middlename">Middle Name</label>
+          <input type="text" class="form-control" id="middlename" aria-describedby="emailHelp"
                  placeholder="Middle Name">
         </div>
 
         <div class="form-group">
-          <label for="lastUser1">Last Name</label>
-          <input type="text" class="form-control" id="lastUser1" aria-describedby="emailHelp"
+          <label for="lastname">Last Name</label>
+          <input type="text" class="form-control" id="lastname" aria-describedby="emailHelp"
                  placeholder="Last Name">
         </div>
 
@@ -47,7 +47,7 @@
         <div class="form-group">
           <label for="exampleInputPhone1">Email</label>
           <input type="text" class="form-control" id="exampleInputPhone1" aria-describedby="emailHelp"
-                 placeholder="Email">
+                 placeholder="Email" [name]="email" value="{{email}}">
 
         </div>
       </fieldset>

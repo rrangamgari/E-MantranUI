@@ -10,7 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { UpdateuserComponent } from './updateuser/updateuser.component';
 import { ListusersComponent } from './listusers/listusers.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -25,7 +25,8 @@ import { ListusersComponent } from './listusers/listusers.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --proxy-config proxy.config.json",
+    "proxy": "ng serve --proxy-config proxy.config.json",
+    "build": "ng build -prod --output-path \"src/main/resources/public\" ",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

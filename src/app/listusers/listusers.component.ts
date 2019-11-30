@@ -35,8 +35,9 @@ export class ListusersComponent implements OnInit {
     };
     this.httpClient.get('/MyReports/api/users', httpOptions).subscribe(
       data => {
-        this.usersData = data.data;
-        console.log(data.data);
+        this.usersData = data;
+        this.usersData = this.usersData.data;
+        //console.log(data.data);
         this.imageLoader = false;
       }
     );

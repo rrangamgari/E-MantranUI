@@ -15,6 +15,7 @@ export class UpdateuserComponent implements OnInit {
   id;
   usersData;
   firstname;
+  public lastname: string;
   email;
 
   ngOnInit() {
@@ -29,10 +30,11 @@ export class UpdateuserComponent implements OnInit {
     };
     this.httpClient.get('/MyReports/api/user/' + this.id, httpOptions).subscribe(
       data => {
-        this.usersData = data.data;
-        console.log(data.data);
-        this.firstname = this.usersData.firstname;
-        this.email = this.usersData.email;
+        this.usersData = data;
+        console.log(data);
+        this.firstname = this.usersData.data.givenname;
+        this.email = this.usersData.data.email;
+        this.lastname = this.usersData.data.familyname;
       }
     );
   }

@@ -5,12 +5,15 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
 import {AlertModule} from 'ngx-bootstrap';
-import { HeaderComponent } from './header/header.component';
-import { LoginComponent } from './login/login.component';
-import { CreateuserComponent } from './createuser/createuser.component';
-import { UpdateuserComponent } from './updateuser/updateuser.component';
-import { ListusersComponent } from './listusers/listusers.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HeaderComponent} from './header/header.component';
+import {LoginComponent} from './login/login.component';
+import {CreateuserComponent} from './createuser/createuser.component';
+import {UpdateuserComponent} from './updateuser/updateuser.component';
+import {ListusersComponent} from './listusers/listusers.component';
+import {HttpClientModule} from '@angular/common/http';
+import {CreateuserpasswordComponent} from './createuserpassword/createuserpassword.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {GlobalService} from './global.service';
 
 
 @NgModule({
@@ -20,15 +23,18 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     CreateuserComponent,
     UpdateuserComponent,
-    ListusersComponent
+    ListusersComponent,
+    CreateuserpasswordComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AlertModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule, ReactiveFormsModule
   ],
-  providers: [],
+  providers: [GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -13,9 +13,13 @@
 
 
     <tr class="row" *ngFor="let user of usersData">
-      <td class="col-md-3 d-none d-xl-table-cell"><img src="assets/images/user.jpg" width="75px" class="rounded-circle"
+      <td class="col-md-3 d-none d-xl-table-cell" *ngIf="!user.dbFile"><img src="assets/images/user.jpg" width="75px" class="rounded-circle"
                                                        [routerLink]="['/updateUser']"
                                                        [queryParams]="{ userId: user.userid }">
+      </td>
+      <td class="col-md-3 d-none d-xl-table-cell" *ngIf="user.dbFile"><img src="data:image/png;base64,{{user.dbFile.data}}" width="75px" class="rounded-circle"
+                                                                           [routerLink]="['/updateUser']"
+                                                                           [queryParams]="{ userId: user.userid }">
       </td>
       <td class="col-md-3 d-none d-xl-table-cell">
         {{ user.givenname }}

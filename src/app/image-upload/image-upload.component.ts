@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpEventType} from '@angular/common/http';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-image-upload',
@@ -14,7 +15,7 @@ export class ImageUploadComponent implements OnInit {
   fileUploadProgress: string = null;
   uploadedFilePath: string = null;
 
-  constructor(private http: HttpClient) {
+  constructor(private route: ActivatedRoute, private http: HttpClient) {
   }
 
   ngOnInit() {
@@ -39,21 +40,24 @@ export class ImageUploadComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    const formData = new FormData();
-    formData.append('files', this.fileData);
+  id;
 
+  onSubmit() {
+    this.id = this.route.snapshot.queryParamMap.get('userId');
+    const formData = new FormData();
+    formData.append('file', this.fileData);
+    console.log(formData);
     this.fileUploadProgress = '0%';
 
-    this.http.post('https://us-central1-tutorial-e6ea7.cloudfunctions.net/fileUpload', formData, {
+    this.http.post('/api/file/uploadFile/' + this.id, formData, {
       reportProgress: true,
       observe: 'events'
     })
       .subscribe(events => {
-        if(events.type === HttpEventType.UploadProgress) {
+        if (events.type === HttpEventType.UploadProgress) {
           this.fileUploadProgress = Math.round(events.loaded / events.total * 100) + '%';
           console.log(this.fileUploadProgress);
-        } else if(events.type === HttpEventType.Response) {
+        } else if (events.type === HttpEventType.Response) {
           this.fileUploadProgress = '';
           console.log(events.body);
           alert('SUCCESS !!');

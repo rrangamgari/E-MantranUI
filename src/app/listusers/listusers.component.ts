@@ -33,7 +33,7 @@ export class ListusersComponent implements OnInit {
     const httpOptions = {
       headers: httpHeaders
     };
-    this.httpClient.get('/MyReports/api/users', httpOptions).subscribe(
+    this.httpClient.get('/api/MyReports/api/users', httpOptions).subscribe(
       data => {
         this.usersData = data;
         this.usersData = this.usersData.data;

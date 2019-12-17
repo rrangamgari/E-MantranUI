@@ -14,6 +14,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {CreateuserpasswordComponent} from './createuserpassword/createuserpassword.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {GlobalService} from './global.service';
+import { TreeViewComponent } from './tree-view/tree-view.component';
+import { DatabaseViewComponent } from './database-view/database-view.component';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import {GlobalService} from './global.service';
     CreateuserComponent,
     UpdateuserComponent,
     ListusersComponent,
-    CreateuserpasswordComponent
+    CreateuserpasswordComponent,
+    TreeViewComponent,
+    DatabaseViewComponent,
+    ImageUploadComponent
 
   ],
   imports: [

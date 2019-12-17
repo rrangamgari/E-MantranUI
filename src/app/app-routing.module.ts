@@ -5,6 +5,7 @@ import {CreateuserComponent} from './createuser/createuser.component';
 import {UpdateuserComponent} from './updateuser/updateuser.component';
 import {ListusersComponent} from './listusers/listusers.component';
 import {CreateuserpasswordComponent} from './createuserpassword/createuserpassword.component';
+import {ImageUploadComponent} from './image-upload/image-upload.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'createNewUser', component: CreateuserpasswordComponent},
   {path: 'createUser', component: CreateuserComponent},
   {path: 'updateUser', component: UpdateuserComponent},
-  {path: 'listUsers', component: ListusersComponent}
+  {path: 'listUsers', component: ListusersComponent},
+  {path: 'uploadImage', component: ImageUploadComponent}
 ];
 
 @NgModule({

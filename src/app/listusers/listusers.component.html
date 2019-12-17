@@ -1,46 +1,50 @@
 <div id="loader" (load)="this.imageLoader = false;" *ngIf="imageLoader"></div>
 <!--<img [hidden]="imageLoader" src="./assets/images/tenor.gif" (load)="this.imageLoader = false;" id="loaderImage"/>-->
-<table class="table table-striped table-responsive-md btn-table" id="listUsers">
+<div class="listUser">
+  <table class="table table-striped table-responsive-md btn-table" id="listUsers">
 
 
-  <tr class="row">
-    <th class="col-md-3 d-none d-xl-table-cell">#</th>
-    <th class="col-md-3 d-none d-xl-table-cell">First Name</th>
-    <th class="col-md-3 d-none d-xl-table-cell">Last Name</th>
-    <th class="col-md-3 d-none d-xl-table-cell">Username</th>
-  </tr>
+    <tr class="row">
+      <th class="col-md-3 d-none d-xl-table-cell">#</th>
+      <th class="col-md-3 d-none d-xl-table-cell">First Name</th>
+      <th class="col-md-3 d-none d-xl-table-cell">Last Name</th>
+      <th class="col-md-3 d-none d-xl-table-cell">Username</th>
+    </tr>
 
 
-  <tr class="row" *ngFor="let user of usersData">
-    <td class="col-md-3 d-none d-xl-table-cell"><img src="assets/images/user.jpg" width="75px" class="rounded-circle"
-                                                     [routerLink]="['/updateUser']" [queryParams]="{ userId: user.userid }">
-    </td>
-    <td class="col-md-3 d-none d-xl-table-cell">
-      {{ user.givenname }}
-    </td>
-    <td class="col-md-3 d-none d-xl-table-cell"> {{ user.familyname }}</td>
-    <td class="col-md-3 d-none d-xl-table-cell">{{ user.email }}</td>
-    <td class="d-block d-xl-none" width="100%" style="border: #117a8b">
-      <table width="100%">
-        <tr>
-          <td rowspan="5" width="20%"><img src="assets/images/user.jpg" width="75px" class="rounded-circle"
-                                           [routerLink]="['/updateUser']" [queryParams]="{ userId: user.userid }"></td>
-        </tr>
-        <tr>
-          <td>{{ user.givenname }}</td>
-        </tr>
-        <tr>
-          <td>{{ user.familyname }}</td>
-        </tr>
-        <tr>
-          <td>{{ user.email }}</td>
-        </tr>
-        <tr>
-          <td>Roles</td>
-        </tr>
-      </table>
-    </td>
+    <tr class="row" *ngFor="let user of usersData">
+      <td class="col-md-3 d-none d-xl-table-cell"><img src="assets/images/user.jpg" width="75px" class="rounded-circle"
+                                                       [routerLink]="['/updateUser']"
+                                                       [queryParams]="{ userId: user.userid }">
+      </td>
+      <td class="col-md-3 d-none d-xl-table-cell">
+        {{ user.givenname }}
+      </td>
+      <td class="col-md-3 d-none d-xl-table-cell"> {{ user.familyname }}</td>
+      <td class="col-md-3 d-none d-xl-table-cell">{{ user.email }}</td>
+      <td class="d-block d-xl-none" width="100%" style="border: #117a8b">
+        <table width="100%">
+          <tr>
+            <td rowspan="5" width="20%"><img src="assets/images/user.jpg" width="75px" class="rounded-circle"
+                                             [routerLink]="['/updateUser']" [queryParams]="{ userId: user.userid }">
+            </td>
+          </tr>
+          <tr>
+            <td>{{ user.givenname }}</td>
+          </tr>
+          <tr>
+            <td>{{ user.familyname }}</td>
+          </tr>
+          <tr>
+            <td>{{ user.email }}</td>
+          </tr>
+          <tr>
+            <td>Roles</td>
+          </tr>
+        </table>
+      </td>
 
-  </tr>
+    </tr>
 
-</table>
+  </table>
+</div>

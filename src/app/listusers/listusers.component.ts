@@ -33,11 +33,11 @@ export class ListusersComponent implements OnInit {
     const httpOptions = {
       headers: httpHeaders
     };
-    this.httpClient.get('/api/MyReports/api/users', httpOptions).subscribe(
+    this.httpClient.get('/api/UserDetails/users', httpOptions).subscribe(
       data => {
         this.usersData = data;
         this.usersData = this.usersData.data;
-        //console.log(data.data);
+
         this.imageLoader = false;
       }
     );
@@ -46,5 +46,15 @@ export class ListusersComponent implements OnInit {
   updateUser(userId) {
     console.log(userId);
     this.router.navigate(['updateUser'], { queryParams: userId, skipLocationChange: true});
+  }
+  dataURItoBlob(dataURI) {
+    const byteString = window.atob(dataURI);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const int8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      int8Array[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([int8Array], { type: 'image/jpeg' });
+    return blob;
   }
 }

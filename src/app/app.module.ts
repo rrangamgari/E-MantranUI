@@ -17,6 +17,7 @@ import {GlobalService} from './global.service';
 import { TreeViewComponent } from './tree-view/tree-view.component';
 import { DatabaseViewComponent } from './database-view/database-view.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { MyLayoutComponent } from './my-layout/my-layout.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
     CreateuserpasswordComponent,
     TreeViewComponent,
     DatabaseViewComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    MyLayoutComponent
 
   ],
   imports: [

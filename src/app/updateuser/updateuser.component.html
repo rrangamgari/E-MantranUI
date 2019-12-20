@@ -1,17 +1,6 @@
-<form class="updateUserform">
+<form class="updateUserform" autocomplete="off">
   <div class="container">
-    <div class="row">
-      <img src="assets/images/user.jpg" width="75px" class="rounded-circle"
-           [routerLink]=""
-           [queryParams]="">
-    </div>
-    <div class="row">
-      <div class="col-md-9"></div>
-      <div class="col-md-2">
-        <button type="submit" class="btn btn-primary col-md-12">Save</button>
-      </div>
-      <div class="col-md-1">&nbsp;</div>
-    </div>
+
     <div class="row">
       <fieldset class="col-md-5">
         <legend>User Details</legend>
@@ -19,39 +8,46 @@
 
         <div class="form-group">
           <label for="firstname">First Name</label>
-          <input type="text" class="form-control" [name]="firstname" id="firstname" aria-describedby="firstnameHelp"
-                 placeholder="First Name" value="{{firstname}}">
+          <input type="text" class="form-control" [(ngModel)]="firstName" id="firstname" aria-describedby="firstnameHelp"
+                 placeholder="First Name" name="first">
         </div>
 
         <div class="form-group">
-          <label for="middlename">Middle Name</label>
-          <input type="text" class="form-control" id="middlename" aria-describedby="emailHelp"
-                 placeholder="Middle Name">
+          <label for="inputmiddlename">Middle Name</label>
+          <input type="text" class="form-control" id="inputmiddlename" aria-describedby="emailHelp"
+                 placeholder="Middle Name"  [(ngModel)]="middleName" name="middle">
         </div>
 
         <div class="form-group">
           <label for="lastname">Last Name</label>
           <input type="text" class="form-control" id="lastname" aria-describedby="emailHelp"
-                 placeholder="Last Name" value="{{lastname}}" [name]="lastname" >
+                 placeholder="Last Name" value="{{lastName}}" [(ngModel)]="lastName" name="last">
         </div>
 
         <div class="form-group">
           <label for="exampleInputGender">Gender</label>
-          <input type="text" class="form-control" id="exampleInputGender" aria-describedby="emailHelp"
-                 placeholder="Gender">
+          <select id="exampleInputGender" class="form-control" [(ngModel)]='genderVal' name="genderSelect">
+            <option value="0">-- Select--</option>
+            <option *ngFor="let gen of gender" value={{gen.usergenderid}}>
+              {{gen.gendername}}
+            </option>
+          </select>
+
 
         </div>
         <div class="form-group">
           <label for="exampleInputPhone">Phone</label>
           <input type="text" class="form-control" id="exampleInputPhone" aria-describedby="emailHelp"
-                 placeholder="Phone">
+                 placeholder="Phone" [(ngModel)]="phone"  name="exampleInputPhone">
 
         </div>
         <div class="form-group">
-          <label for="exampleInputPhone1">Email</label>
-          <input type="text" class="form-control" id="exampleInputPhone1" aria-describedby="emailHelp"
-                 placeholder="Email" [name]="email" value="{{email}}">
+          <label for="email-input">Email</label>
+          <input type="text" class="form-control" id="email-input" placeholder="Email" [(ngModel)]="email"  name="email-input">
 
+        </div>
+        <div class="col-md-5">
+          <button type="submit" class="btn btn-primary col-md-12" (click)="saveUserDetails()">Save</button>
         </div>
       </fieldset>
       <div class="col-md-1">&nbsp;</div>
@@ -60,27 +56,36 @@
 
 
         <div class="form-group">
-          <label for="address1">Address 1</label>
-          <input type="text" class="form-control" id="address1" placeholder="Address 1">
+          <label for="address1Input">Address 1</label>
+          <input type="text" class="form-control" id="address1Input" placeholder="Address 1" [(ngModel)]="address1"
+                 name="address1Input" >
         </div>
         <div class="form-group">
-          <label for="address2">Address 2</label>
-          <input type="text" class="form-control" id="address2" placeholder="Address 2">
+          <label for="address2Input">Address 2</label>
+          <input type="text" class="form-control" id="address2Input" placeholder="Address 2" [(ngModel)]="address2"
+                 name="address2Input" >
         </div>
 
         <div class="form-group">
-          <label for="city">City</label>
-          <input type="text" class="form-control" id="City" placeholder="City">
+          <label for="cityInput">City</label>
+          <input type="text" class="form-control" id="cityInput" placeholder="City" [(ngModel)]="city" name="cityInput" >
         </div>
         <div class="form-group">
-          <label for="state">State</label>
-          <input type="text" class="form-control" id="state" placeholder="State">
+          <label for="stateInput">State</label>
+          <input type="text" class="form-control" id="stateInput" placeholder="State" [(ngModel)]="state" name="stateInput">
         </div>
         <div class="form-group">
-          <label for="zip">Zip</label>
-          <input type="text" class="form-control" id="zip" placeholder="Zip">
+          <label for="country-Input">Country</label>
+          <input type="text" class="form-control" id="country-Input" placeholder="Country" [(ngModel)]="country"
+                 name="country-Input">
         </div>
-
+        <div class="form-group">
+          <label for="zip-Input">Zip</label>
+          <input type="text" class="form-control" id="zip-Input" placeholder="Zip" [(ngModel)]="zip" name="zip-Input">
+        </div>
+        <div class="col-md-5">
+          <button type="submit" class="btn btn-primary col-md-12" (click)="saveUserAddress()">Save</button>
+        </div>
 
       </fieldset>
     </div>
@@ -90,19 +95,38 @@
       <fieldset class="col-md-5">
         <legend>Roles Details</legend>
 
+        <div class="row">
+        <div class="col-md-9">
+          <label for="roles">Roles</label>
+          <select multiple id="roles"  [(ngModel)]='rolesVal' name="roleSelect" class="mdb-select colorful-select dropdown-primary md-form" >
+            <option *ngFor="let role of roles" value={{role.roleid}}>
+              {{role.roleid}}
+            </option>
+          </select>
 
-        <div class="form-group">
-          <label for="firstUser1">Admin</label>
-          <input type="text" class="form-control" id="firstUser1" aria-describedby="firstnameHelp"
-                 placeholder="First Name">
         </div>
 
-        <div class="form-group">
-          <label for="middleUser1">Super User</label>
-          <input type="text" class="form-control" id="middleUser1" aria-describedby="emailHelp"
-                 placeholder="Middle Name">
-        </div>
+          <div class="col-md-2">
+            <div class="row" *ngIf="!usersData.dbFile">
+              <img src="assets/images/user.jpg" class="rounded-circle"
+                   [routerLink]=""
+                   [queryParams]="" data-toggle="modal" data-target="#myModal" [routerLinkActive]="['is-active']"
+                   queryParamsHandling="merge">
 
+            </div>
+            <div class="row" *ngIf="usersData.dbFile">
+              <img src="data:image/png;base64,{{usersData.dbFile.data}}" width="75px" class="rounded-circle"
+                   [routerLink]=""
+                   [queryParams]="" [routerLinkActive]="['is-active']" queryParamsHandling="merge" data-toggle="modal"
+                   data-target="#myModal">
+
+            </div>
+          </div>
+          <div class="col-md-1">&nbsp;</div>
+        </div>
+        <div class="col-md-5">
+          <button type="submit" class="btn btn-primary col-md-12">Save</button>
+        </div>
 
       </fieldset>
       <div class="col-md-1">&nbsp;</div>
@@ -111,26 +135,59 @@
 
 
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <label for="password-Input">New Password</label>
+          <input type="password" class="form-control" id="password-Input" placeholder="Password" [(ngModel)]="newpassword"
+                 name="password-Input">
         </div>
         <div class="form-group">
-          <label for="passwordQuestion">Password Question</label>
-          <input type="text" class="form-control" id="passwordQuestion" aria-describedby="passwordQuestionHelp"
-                 placeholder="Password Question">
+          <label for="password1-Input">Confirm New Password</label>
+          <input type="password" class="form-control" id="password1-Input" placeholder="Password"
+                 [(ngModel)]="confnewpassword"
+                 name="password1-Input">
+        </div>
+        <div class="form-group">
+          <label for="password-Question">Password Question</label>
+          <input type="text" class="form-control" id="password-Question" aria-describedby="passwordQuestionHelp"
+                 placeholder="Password Question" [(ngModel)]="passwordQuestion" name="password-Question">
         </div>
 
         <div class="form-group">
-          <label for="passwordAnswer">Password Answer</label>
-          <input type="text" class="form-control" id="passwordAnswer" aria-describedby="emailHelp"
-                 placeholder="Password Answer">
+          <label for="password-Answer">Password Answer</label>
+          <input type="text" class="form-control" id="password-Answer" aria-describedby="emailHelp"
+                 placeholder="Password Answer" [(ngModel)]="passwordAnswer" name="password-Answer">
         </div>
-
+        <div class="col-md-5">
+          <button type="submit" class="btn btn-primary col-md-12">Save</button>
+        </div>
       </fieldset>
     </div>
     <div class="row"> &nbsp;
     </div>
   </div>
+  <!-- Button to Open the Modal -->
 
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Upload Profile Picture</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <app-image-upload></app-image-upload>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 </form>

@@ -28,10 +28,16 @@
       <td class="col-md-3 d-none d-xl-table-cell">{{ user.email }}</td>
       <td class="d-block d-xl-none" width="100%" style="border: #117a8b">
         <table width="100%">
-          <tr>
-            <td rowspan="5" width="20%"><img src="assets/images/user.jpg" width="75px" class="rounded-circle"
-                                             [routerLink]="['/updateUser']" [queryParams]="{ userId: user.userid }">
+          <tr >
+            <td rowspan="5" width="20%" *ngIf="!user.dbFile"><img src="assets/images/user.jpg" width="45px" class="rounded-circle"
+                                                                                  [routerLink]="['/updateUser']"
+                                                                                  [queryParams]="{ userId: user.userid }">
             </td>
+            <td rowspan="5" width="20%" *ngIf="user.dbFile"><img src="data:image/png;base64,{{user.dbFile.data}}" width="45px" class="rounded-circle"
+                                                                                 [routerLink]="['/updateUser']"
+                                                                                 [queryParams]="{ userId: user.userid }">
+            </td>
+
           </tr>
           <tr>
             <td>{{ user.givenname }}</td>

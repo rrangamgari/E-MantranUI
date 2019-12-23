@@ -37,6 +37,7 @@ export class ImageUploadComponent implements OnInit {
     reader.readAsDataURL(this.fileData);
     reader.onload = (_event) => {
       this.previewUrl = reader.result;
+      localStorage.setItem('previewUrl', this.previewUrl);
     }
   }
 

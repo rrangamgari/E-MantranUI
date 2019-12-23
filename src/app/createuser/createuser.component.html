@@ -1,54 +1,83 @@
-<div class="row" style="padding: 70px">
+<div class="row" style="padding: 90px">
   <div class="col-4 d-none d-sm-table-cell"></div>
   <div class="">
     <form class="createUserform">
 
       <div class="form-group">
         <label for="firstUser1">First Name</label>
-        <input type="text" class="form-control" id="firstUser1" aria-describedby="firstnameHelp"
-               placeholder="First Name">
+        <input type="text" class="form-control" id="firstUser1" name="firstUser1" aria-describedby="firstnameHelp"
+               placeholder="First Name" [(ngModel)]="firstName">
       </div>
 
       <div class="form-group">
         <label for="middleUser1">Middle Name</label>
-        <input type="text" class="form-control" id="middleUser1" aria-describedby="emailHelp" placeholder="Middle Name">
+        <input type="text" class="form-control" id="middleUser1" aria-describedby="emailHelp" placeholder="Middle Name"
+               [(ngModel)]="middleName" name="firstUser2">
       </div>
 
       <div class="form-group">
         <label for="lastUser1">Last Name</label>
-        <input type="text" class="form-control" id="lastUser1" aria-describedby="emailHelp" placeholder="Last Name">
+        <input type="text" class="form-control" id="lastUser1" aria-describedby="emailHelp" placeholder="Last Name"
+               [(ngModel)]="lastName" name="firstUser2">
       </div>
 
       <div class="form-group">
         <label for="exampleInputGender">Gender</label>
-        <input type="text" class="form-control" id="exampleInputGender" aria-describedby="emailHelp"
-               placeholder="Gender">
+        <select id="exampleInputGender" class="form-control" [(ngModel)]='genderVal' name="genderSelect">
+          <option value="0" selected="selected" disabled>-- Select--</option>
+          <option *ngFor="let gen of gender" value={{gen.usergenderid}}>{{gen.gendername}}</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="exampleInputEmail">Email</label>
         <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
-               placeholder="Email">
+               placeholder="Email" [(ngModel)]="email" name="firstUser4">
       </div>
       <div class="form-group">
         <label for="exampleInputPhone">Phone</label>
         <input type="phone" class="form-control" id="exampleInputPhone" aria-describedby="phoneHelp"
-               placeholder="Phone">
+               placeholder="Phone" [(ngModel)]="phone" name="firstUser5">
       </div>
 
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Upload</span>
-        </div>
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile01">
-          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-        </div>
-      </div>
+      <!-- <div class="input-group mb-3" data-toggle="modal" data-target="#myModal">
+         <div class="input-group-prepend">
+           <span class="input-group-text">Upload</span>
+         </div>
+         <div class="custom-file">
+           <input type="file" class="custom-file-input" id="inputGroupFile01">
+           <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+         </div>
+       </div>
+       <div class="image-preview mb-3" *ngIf="previewUrl">
+         <img [src]="previewUrl" height="300" />
+       </div>-->
       <button type="button" class="btn btn-primary" (click)="back()"> Back</button>&nbsp;&nbsp;
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
     </form>
   </div>
   <div class="col-4 d-none d-sm-table-cell"></div>
   <div class="col-1 d-none d-sm-table-cell"></div>
 </div>
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Upload Profile Picture</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <app-image-upload></app-image-upload>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

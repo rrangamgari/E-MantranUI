@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {GlobalService} from '../global.service';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-createuserpassword',
@@ -10,14 +11,14 @@ import {Router} from '@angular/router';
   providers: [GlobalService]
 })
 export class CreateuserpasswordComponent implements OnInit, OnDestroy {
-  //passwordDetails: FormGroup;
-  passwordQuestion: string = '';
-  passwordAnswer: string = '';
-  username: string = '';
-  password: string = '';
+  private passwordAnswer: string;
+  private username: string;
+  private password: string;
+  private passwordQuestions: any[];
+  private passwordQuestionsVal: any;
   public user;
 
-  constructor(public  router: Router, private globalService: GlobalService, private fb: FormBuilder) {
+  constructor(public  router: Router, private globalService: GlobalService, private fb: FormBuilder, private httpClient: HttpClient) {
     /*this.passwordDetails = new FormGroup({
 
       exampleInputUser1: new FormControl()
@@ -27,24 +28,35 @@ export class CreateuserpasswordComponent implements OnInit, OnDestroy {
   ngOnInit() {
     console.log('int :' + localStorage.getItem('passwordQuestion'));
     console.log('int :' + localStorage.getItem('username'));
-    this.passwordQuestion = localStorage.getItem('passwordQuestion');
+    this.passwordQuestionsVal = localStorage.getItem('passwordQuestion');
     this.passwordAnswer = localStorage.getItem('passwordAnswer');
-    this.user = localStorage.getItem('username');
+    this.username = localStorage.getItem('username');
     this.password = localStorage.getItem('password');
+    const httpHeaders = new HttpHeaders();
+    httpHeaders.append('Content-Type', 'application/json');
+    httpHeaders.append('Access-Control-Allow-Origin', '*');
+    httpHeaders.append('Authorization', 'Basic ' + btoa('saikiran:password'));
+
+    const httpOptions = {
+      headers: httpHeaders
+    };
+    this.httpClient.get<any[]>('/api/MyReports/passwordQuestions').subscribe((result) => {
+      this.passwordQuestions = result.data;
+    }, error => console.error(error));
   }
 
   ngOnDestroy() {
-    console.log('destroy :' + this.passwordQuestion);
-    //this.globalService.passwordDetails = this.passwordDetails;
-    localStorage.setItem('passwordQuestion', this.passwordQuestion);
+    console.log('destroy :' + this.passwordQuestionsVal);
+    localStorage.setItem('passwordQuestion', this.passwordQuestionsVal);
+    localStorage.setItem('passwordAnswer', this.passwordAnswer);
   }
 
 
   next() {
-    console.log(this.passwordQuestion);
-    localStorage.setItem('passwordQuestion', this.passwordQuestion);
+    console.log('passwordAnswer: ' + this.passwordAnswer);
+    localStorage.setItem('passwordQuestion', this.passwordQuestionsVal);
     localStorage.setItem('passwordAnswer', this.passwordAnswer);
-    localStorage.setItem('username', this.user);
+    localStorage.setItem('username', this.username);
     localStorage.setItem('password', this.password);
     this.router.navigate(['createUser']);
   }

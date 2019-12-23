@@ -14,6 +14,7 @@ export class UpdateuserComponent implements OnInit {
 
   private id: string;
   private usersData;
+  private data;
   private firstName: string;
   private middleName: string;
   private lastName: string;
@@ -34,7 +35,8 @@ export class UpdateuserComponent implements OnInit {
   /*private password: string;*/
   private newpassword: string;
   private confnewpassword: string;
-  private passwordQuestion: string;
+  private passwordQuestions: any[];
+  private passwordQuestionsVal: any;
   private passwordAnswer: string;
 
   ngOnInit() {
@@ -54,6 +56,9 @@ export class UpdateuserComponent implements OnInit {
     this.httpClient.get<any[]>('/api/MyReports/roles').subscribe(result => {
       this.roles = result.data;
     }, error => console.error(error));
+    this.httpClient.get<any[]>('/api/MyReports/passwordQuestions').subscribe(result => {
+      this.passwordQuestions = result.data;
+    }, error => console.error(error));
     /*this.httpClient.get('/api/MyReports/gender', httpOptions).subscribe(
       data => {
 
@@ -63,8 +68,8 @@ export class UpdateuserComponent implements OnInit {
       }
     );*/
     this.httpClient.get('/api/UserDetails/user/' + this.id, httpOptions).subscribe(
-      data => {
-        this.usersData = data.data;
+      obj => {
+        this.usersData = obj.data;
 
         this.firstName = this.usersData.givenname;
         this.middleName = this.usersData.middlename;
@@ -72,7 +77,7 @@ export class UpdateuserComponent implements OnInit {
         this.email = this.usersData.email;
 
         this.genderVal = this.usersData.usergenderid;
-        this.rolesVal = this.usersData.usergenderid;
+        //this.rolesVal = this.usersData.usergenderid;
         console.log(this.usersData.usergenderid)
         this.phone = this.usersData.mobile;
         for (var k = 0; k < this.usersData.addresses.length; k++) {
@@ -88,9 +93,15 @@ export class UpdateuserComponent implements OnInit {
         if (this.usersData.password != null) {
           console.log(this.usersData.password);
           /*this.password = this.usersData.password.password;*/
-          this.passwordQuestion = this.usersData.password.passwordquestion;
+          this.passwordQuestionsVal = this.usersData.password.passwordQuestion.id;
           this.passwordAnswer = this.usersData.password.passwordanswer;
 
+        }
+        for (var k = 0; k < this.usersData.userRoles.length; k++) {
+          this.rolesVal[k] = this.usersData.userRoles[k].userRoleId.userroleid;
+        }
+        for (var k = 0; k < this.usersData.userRoles.length; k++) {
+          this.rolesVal[k] = this.usersData.userRoles[k].userRoleId.userroleid;
         }
         //this.imageUrl = this.usersData.data.dbFile;
       }
@@ -147,6 +158,27 @@ export class UpdateuserComponent implements OnInit {
       "zip": this.zip
     };
     this.httpClient.post('/api/UserDetails/address/' + this.id, user, httpOptions).subscribe(
+      data => {
+        console.log(data);
+        //this.imageUrl = this.usersData.data.dbFile;
+      }
+    );
+
+  }
+
+  saveUserRole() {
+    this.id = this.route.snapshot.queryParamMap.get('userId');
+    const httpHeaders = new HttpHeaders();
+    httpHeaders.append('Content-Type', 'application/json');
+    httpHeaders.append('Access-Control-Allow-Origin', '*');
+    httpHeaders.append('Authorization', 'Basic ' + btoa('saikiran:password'));
+
+    const httpOptions = {
+        headers: httpHeaders
+      }
+    ;
+    console.log(this.rolesVal);
+    this.httpClient.post('/api/UserDetails/roles/' + this.id, this.rolesVal, httpOptions).subscribe(
       data => {
         console.log(data);
         //this.imageUrl = this.usersData.data.dbFile;

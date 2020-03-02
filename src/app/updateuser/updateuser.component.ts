@@ -49,15 +49,15 @@ export class UpdateuserComponent implements OnInit {
     const httpOptions = {
       headers: httpHeaders
     };
-    this.httpClient.get<any[]>('/api/MyReports/gender').subscribe(result => {
-      this.gender = result.data;
+    this.httpClient.get<any[]>('/api/userSystem/gender').subscribe(result => {
+      this.gender = result.data ;
     }, error => console.error(error));
 
-    this.httpClient.get<any[]>('/api/MyReports/roles').subscribe(result => {
-      this.roles = result.data;
+    this.httpClient.get<any[]>('/api/userSystem/roles').subscribe(result => {
+      this.roles = result.data ;
     }, error => console.error(error));
-    this.httpClient.get<any[]>('/api/MyReports/passwordQuestions').subscribe(result => {
-      this.passwordQuestions = result.data;
+    this.httpClient.get<any[]>('/api/userSystem/passwordQuestions').subscribe(result => {
+      this.passwordQuestions = result.data ;
     }, error => console.error(error));
     /*this.httpClient.get('/api/MyReports/gender', httpOptions).subscribe(
       data => {
@@ -69,7 +69,7 @@ export class UpdateuserComponent implements OnInit {
     );*/
     this.httpClient.get('/api/UserDetails/user/' + this.id, httpOptions).subscribe(
       obj => {
-        this.usersData = obj.data;
+        this.usersData = obj.data ;
 
         this.firstName = this.usersData.givenname;
         this.middleName = this.usersData.middlename;

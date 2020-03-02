@@ -47,7 +47,7 @@ export class CreateuserComponent implements OnInit, OnDestroy {
   ngOnInit() {
     console.log(this.globalService);
 
-    this.httpClient.get<any[]>('/api/MyReports/gender').subscribe(result => {
+    this.httpClient.get<any[]>('/api/userSystem/gender').subscribe(result => {
       this.gender = result.data;
     }, error => console.error(error));
   }

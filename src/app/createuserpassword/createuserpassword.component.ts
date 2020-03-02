@@ -40,7 +40,7 @@ export class CreateuserpasswordComponent implements OnInit, OnDestroy {
     const httpOptions = {
       headers: httpHeaders
     };
-    this.httpClient.get<any[]>('/api/MyReports/passwordQuestions').subscribe((result) => {
+    this.httpClient.get<any[]>('/api/userSystem/passwordQuestions').subscribe((result) => {
       this.passwordQuestions = result.data;
     }, error => console.error(error));
   }
@@ -50,7 +50,6 @@ export class CreateuserpasswordComponent implements OnInit, OnDestroy {
     localStorage.setItem('passwordQuestion', this.passwordQuestionsVal);
     localStorage.setItem('passwordAnswer', this.passwordAnswer);
   }
-
 
   next() {
     console.log('passwordAnswer: ' + this.passwordAnswer);

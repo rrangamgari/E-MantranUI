@@ -80,7 +80,8 @@ export class UpdateuserComponent implements OnInit {
         //this.rolesVal = this.usersData.usergenderid;
         console.log(this.usersData.usergenderid)
         this.phone = this.usersData.mobile;
-        for (var k = 0; k < this.usersData.addresses.length; k++) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let k = 0; k < this.usersData.addresses.length; k++) {
           if (this.usersData.addresses[k].defaultaddress) {
             this.address1 = this.usersData.addresses[k].address1;
             this.address2 = this.usersData.addresses[k].address2;
@@ -97,10 +98,10 @@ export class UpdateuserComponent implements OnInit {
           this.passwordAnswer = this.usersData.password.passwordanswer;
 
         }
-        for (var k = 0; k < this.usersData.userRoles.length; k++) {
+        for (let k = 0; k < this.usersData.userRoles.length; k++) {
           this.rolesVal[k] = this.usersData.userRoles[k].userRoleId.userroleid;
         }
-        for (var k = 0; k < this.usersData.userRoles.length; k++) {
+        for (let k = 0; k < this.usersData.userRoles.length; k++) {
           this.rolesVal[k] = this.usersData.userRoles[k].userRoleId.userroleid;
         }
         //this.imageUrl = this.usersData.data.dbFile;
@@ -121,12 +122,12 @@ export class UpdateuserComponent implements OnInit {
       }
     ;
     const user = {
-      "givenname": this.firstName,
-      "middlename": this.middleName,
-      "familyname": this.lastName,
-      "email": this.email,
-      "usergenderid": this.genderVal,
-      "mobile": this.phone
+      'givenname': this.firstName,
+      'middlename': this.middleName,
+      'familyname': this.lastName,
+      'email': this.email,
+      'usergenderid': this.genderVal,
+      'mobile': this.phone
     };
     this.httpClient.post('/api/UserDetails/userDetail/' + this.id, user, httpOptions).subscribe(
       data => {
@@ -150,12 +151,12 @@ export class UpdateuserComponent implements OnInit {
       }
     ;
     const user = {
-      "address1": this.address1,
-      "address2": this.address2,
-      "city": this.city,
-      "state": this.state,
-      "country": this.country,
-      "zip": this.zip
+      'address1': this.address1,
+      'address2': this.address2,
+      'city': this.city,
+      'state': this.state,
+      'country': this.country,
+      'zip': this.zip
     };
     this.httpClient.post('/api/UserDetails/address/' + this.id, user, httpOptions).subscribe(
       data => {

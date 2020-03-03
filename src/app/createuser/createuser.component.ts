@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormGroup} from '@angular/forms';
 import {GlobalService} from '../global.service';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-createuser',
@@ -48,7 +48,9 @@ export class CreateuserComponent implements OnInit, OnDestroy {
     console.log(this.globalService);
 
     this.httpClient.get<any[]>('/api/userSystem/gender').subscribe(result => {
-      this.gender = result.data;
+      // tslint:disable-next-line:prefer-const
+      const r = result;
+      this.gender = r.data;
     }, error => console.error(error));
   }
 
@@ -80,27 +82,27 @@ export class CreateuserComponent implements OnInit, OnDestroy {
       }
     ;
     const user = {
-      "givenname": this.firstName,
-      "middlename": this.middleName,
-      "familyname": this.lastName,
-      "email": this.email,
-      "usergenderid": this.genderVal,
-      "mobile": this.phone,
-      "accountname": localStorage.getItem('username'),
-      "active": "1",
-      "password": {
-        "passwordQuestion": {
-          "id": localStorage.getItem('passwordQuestion')
+      'givenname': this.firstName,
+      'middlename': this.middleName,
+      'familyname': this.lastName,
+      'email': this.email,
+      'usergenderid': this.genderVal,
+      'mobile': this.phone,
+      'accountname': localStorage.getItem('username'),
+      'active': '1',
+      'password': {
+        'passwordQuestion': {
+          'id': localStorage.getItem('passwordQuestion')
         },
-        "passwordanswer": localStorage.getItem('passwordAnswer'),
-
-        "password": localStorage.getItem('password')
+        'passwordanswer': localStorage.getItem('passwordAnswer'),
+        'password': localStorage.getItem('password')
       }
     };
     this.httpClient.post('/api/UserDetails/user/0', user, httpOptions).subscribe(
       data => {
         console.log(data);
-        if (data.status = "success") {
+        // tslint:disable-next-line:no-conditional-assignment
+        if (data.status === 'success') {
           localStorage.removeItem('username');
           localStorage.removeItem('passwordQuestion');
           localStorage.removeItem('passwordAnswer');
@@ -110,6 +112,6 @@ export class CreateuserComponent implements OnInit, OnDestroy {
         //this.imageUrl = this.usersData.data.dbFile;
       }
     );
-
   }
+
 }

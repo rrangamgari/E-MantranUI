@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'MyReportsUI'`, () => {
+  it(`should have as title 'EMantranUI'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('MyReportsUI');
+    expect(app.title).toEqual('EMantranUI');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('MyReportsUI app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('EMantranUI app is running!');
   });
 });

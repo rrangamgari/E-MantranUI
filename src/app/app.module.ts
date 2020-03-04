@@ -18,6 +18,7 @@ import { TreeViewComponent } from './tree-view/tree-view.component';
 import { DatabaseViewComponent } from './database-view/database-view.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { MyLayoutComponent } from './my-layout/my-layout.component';
+import { CreateinvitationComponent } from './createinvitation/createinvitation.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MyLayoutComponent } from './my-layout/my-layout.component';
     TreeViewComponent,
     DatabaseViewComponent,
     ImageUploadComponent,
-    MyLayoutComponent
+    MyLayoutComponent,
+    CreateinvitationComponent
 
   ],
   imports: [

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpEventType} from '@angular/common/http';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-image-upload',
@@ -9,7 +9,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ImageUploadComponent implements OnInit {
 
-  id: string = null;
+  userId: string = null;
   fileData: File = null;
   previewUrl: any = null;
   fileUploadProgress: string = null;
@@ -22,17 +22,19 @@ export class ImageUploadComponent implements OnInit {
   }
 
   fileProgress(fileInput: any) {
-    this.fileData = <File>fileInput.target.files[0];
+    this.fileData = <File> fileInput.target.files[0];
     this.preview();
   }
 
   preview() {
     // Show preview
+    // tslint:disable-next-line:prefer-const
     var mimeType = this.fileData.type;
     if (mimeType.match(/image\/*/) == null) {
       return;
     }
 
+    // tslint:disable-next-line:prefer-const
     var reader = new FileReader();
     reader.readAsDataURL(this.fileData);
     reader.onload = (_event) => {
@@ -44,13 +46,13 @@ export class ImageUploadComponent implements OnInit {
 
   onSubmit() {
 
-    this.id = this.route.snapshot.queryParamMap.get('userId');
+    this.userId = this.route.snapshot.queryParamMap.get('userId');
     const formData = new FormData();
     formData.append('file', this.fileData);
     console.log(formData);
     this.fileUploadProgress = '0%';
 
-    this.http.post('/api/file/uploadFile/' + this.id, formData, {
+    this.http.post('/api/file/uploadFile/' + this.userId, formData, {
       reportProgress: true,
       observe: 'events',
       headers: {

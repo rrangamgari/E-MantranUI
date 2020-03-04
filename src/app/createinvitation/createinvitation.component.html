@@ -1,0 +1,69 @@
+<div class="row" style="padding: 120px">
+  <div class="col-2 d-none d-sm-table-cell"></div>
+  <div class="col 6">
+    <form class="createUserform">
+
+      <div class="form-group">
+        <label for="firstUser1">Event Title*</label>
+        <input [(ngModel)]="firstName" aria-describedby="firstnameHelp" class="form-control" id="firstUser1" name="firstUser1"
+               placeholder="Event Title" type="text">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputType">Event Type*</label>
+        <select [(ngModel)]='eventTypeVal' class="form-control" id="exampleInputType" name="eventTypeSelect">
+          <option disabled selected="selected" value="0">-- Select--</option>
+          <option *ngFor="let gen of eventType" value={{gen.eventtypeid}}>{{gen.eventdescription}}</option>
+        </select>
+
+      </div>
+
+      <div class="form-group">
+        <label for="lastUser1">Hosted By</label>
+        <input [(ngModel)]="lastName" aria-describedby="emailHelp" class="form-control" id="lastUser1" name="firstUser2"
+               placeholder="Hosted By" type="text">
+      </div>
+
+
+      <div class="form-group">
+        <label for="exampleInputTime">Event Date/Time</label>
+
+        <input [(ngModel)]="email" aria-describedby="emailHelp" class="form-control" id="exampleInputTime"
+               name="firstUser4" placeholder="Email" type="datetime-local">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPhone">Phone</label>
+        <input [(ngModel)]="phone" aria-describedby="phoneHelp" class="form-control" id="exampleInputPhone"
+               name="firstUser5" placeholder="Phone" type="phone">
+      </div>
+
+
+      <button (click)="back()" class="btn btn-primary" type="button"> Back</button>&nbsp;&nbsp;
+      <button (click)="save()" class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+  <div class="col-2 d-none d-sm-table-cell"></div>
+</div>
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Upload Profile Picture</h4>
+        <button class="close" data-dismiss="modal" type="button">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <app-image-upload></app-image-upload>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button class="btn btn-danger" data-dismiss="modal" type="button">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

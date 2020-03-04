@@ -40,11 +40,12 @@
       <ul class="navbar-nav mr-auto">
 
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button" >
           Dropdown
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/login">Login</a>
+          <!--<a class="dropdown-item" href="/login" *ngIf="!userlogged">Login</a>
+          <a class="dropdown-item" href="/login" (click)="logout()">Logout</a>-->
           <a class="dropdown-item" href="/createNewUser">Create User</a>
           <a class="dropdown-item" href="/listUsers">List User</a>
           <a class="dropdown-item" href="/updateUser">Update User</a>
@@ -52,7 +53,8 @@
       </li>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <li class="nav-item active">
-          <p class="nav-link" (click)="login()" >Login <span class="sr-only">(current)</span></p>
+          <p (click)="login()" *ngIf="!userlogged" class="nav-link">Login <span class="sr-only">(current)</span></p>
+          <p (click)="logout()" *ngIf="userlogged" class="nav-link">Logout <span class="sr-only">(current)</span></p>
         </li>
       </ul>
       </div>

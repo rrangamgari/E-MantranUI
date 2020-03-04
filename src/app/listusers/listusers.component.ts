@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 
 @Component({
@@ -25,28 +25,36 @@ export class ListusersComponent implements OnInit {
   }
 
   ngOnInit() {
-    const httpHeaders = new HttpHeaders();
-    httpHeaders.append('Content-Type', 'application/json');
-    httpHeaders.append('Access-Control-Allow-Origin', '*');
-    httpHeaders.append('Authorization', 'Basic ' + btoa('saikiran:password'));
+    console.log("localStorage.getItem('access_token') : " + localStorage.getItem('access_token'))
+    if (localStorage.getItem('access_token') === null) {
+      this.router.navigate(['login']);
+    } else {
 
-    const httpOptions = {
-      headers: httpHeaders
-    };
-    this.httpClient.get('/api/UserDetails/users', httpOptions).subscribe(
-      data => {
-        this.usersData = data;
-        this.usersData = this.usersData.data;
 
-        this.imageLoader = false;
-      }
-    );
+      const httpOptions = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+          'Access-Control-Allow-Origin': '*'
+        }
+      };
+
+      this.httpClient.get('/api/UserDetails/users', httpOptions).subscribe(
+        data => {
+          this.usersData = data;
+          this.usersData = this.usersData.data;
+
+          this.imageLoader = false;
+        }
+      );
+    }
   }
 
   updateUser(userId) {
     console.log(userId);
-    this.router.navigate(['updateUser'], { queryParams: userId, skipLocationChange: true});
+    this.router.navigate(['updateUser'], {queryParams: userId, skipLocationChange: true});
   }
+
   dataURItoBlob(dataURI) {
     const byteString = window.atob(dataURI);
     const arrayBuffer = new ArrayBuffer(byteString.length);
@@ -54,7 +62,7 @@ export class ListusersComponent implements OnInit {
     for (let i = 0; i < byteString.length; i++) {
       int8Array[i] = byteString.charCodeAt(i);
     }
-    const blob = new Blob([int8Array], { type: 'image/jpeg' });
+    const blob = new Blob([int8Array], {type: 'image/jpeg'});
     return blob;
   }
 }

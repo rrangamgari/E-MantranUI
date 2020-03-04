@@ -74,31 +74,33 @@ export class CreateuserComponent implements OnInit, OnDestroy {
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('Content-Type', 'application/json');
     httpHeaders.append('Access-Control-Allow-Origin', '*');
-    httpHeaders.append('Authorization', 'Basic ' + btoa('saikiran:password'));
+    httpHeaders.append('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkZW1vIiwiZXhwIjoxNTgzMjczNTQyLCJpYXQiOjE1ODMyNTU1NDJ9.GM4Ky0M3f1uBbOlEXB5NVw75mJMJY6X9xbL-g-SE6tfaiizYTXVTbxcJfywVQHy_6nKMpV4szmf4QnueiaiK9g');
 
     const httpOptions = {
-        headers: httpHeaders
-
-      }
-    ;
-    const user = {
-      'givenname': this.firstName,
-      'middlename': this.middleName,
-      'familyname': this.lastName,
-      'email': this.email,
-      'usergenderid': this.genderVal,
-      'mobile': this.phone,
-      'accountname': localStorage.getItem('username'),
-      'active': '1',
-      'password': {
-        'passwordQuestion': {
-          'id': localStorage.getItem('passwordQuestion')
-        },
-        'passwordanswer': localStorage.getItem('passwordAnswer'),
-        'password': localStorage.getItem('password')
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+        'Access-Control-Allow-Origin': '*'
       }
     };
-    this.httpClient.post('/api/UserDetails/user/0', user, httpOptions).subscribe(
+    const user = {
+      givenname: this.firstName,
+      middlename: this.middleName,
+      familyname: this.lastName,
+      email: this.email,
+      usergenderid: this.genderVal,
+      mobile: this.phone,
+      accountname: localStorage.getItem('username'),
+      active: '1',
+      password: {
+        passwordQuestion: {
+          id: localStorage.getItem('passwordQuestion')
+        },
+        passwordanswer: localStorage.getItem('passwordAnswer'),
+        password: localStorage.getItem('password')
+      }
+    };
+    this.httpClient.post('/api/userSystem/user', user, httpOptions).subscribe(
       data => {
         console.log(data);
         // tslint:disable-next-line:no-conditional-assignment
@@ -109,7 +111,7 @@ export class CreateuserComponent implements OnInit, OnDestroy {
           localStorage.removeItem('password');
         }
         console.log(localStorage.getItem('passwordAnswer'));
-        //this.imageUrl = this.usersData.data.dbFile;
+        // this.imageUrl = this.usersData.data.dbFile;
       }
     );
   }

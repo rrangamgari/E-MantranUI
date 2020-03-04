@@ -47,7 +47,11 @@ export class UpdateuserComponent implements OnInit {
     httpHeaders.append('Authorization', 'Basic ' + btoa('saikiran:password'));
 
     const httpOptions = {
-      headers: httpHeaders
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+        'Access-Control-Allow-Origin': '*'
+      }
     };
     this.httpClient.get<any[]>('/api/userSystem/gender').subscribe(result => {
       this.gender = result.data ;
@@ -77,8 +81,8 @@ export class UpdateuserComponent implements OnInit {
         this.email = this.usersData.email;
 
         this.genderVal = this.usersData.usergenderid;
-        //this.rolesVal = this.usersData.usergenderid;
-        console.log(this.usersData.usergenderid)
+        // this.rolesVal = this.usersData.usergenderid;
+        console.log(this.usersData.usergenderid);
         this.phone = this.usersData.mobile;
         // tslint:disable-next-line:prefer-for-of
         for (let k = 0; k < this.usersData.addresses.length; k++) {
@@ -104,7 +108,7 @@ export class UpdateuserComponent implements OnInit {
         for (let k = 0; k < this.usersData.userRoles.length; k++) {
           this.rolesVal[k] = this.usersData.userRoles[k].userRoleId.userroleid;
         }
-        //this.imageUrl = this.usersData.data.dbFile;
+        // this.imageUrl = this.usersData.data.dbFile;
       }
     );
   }
@@ -117,22 +121,24 @@ export class UpdateuserComponent implements OnInit {
     httpHeaders.append('Authorization', 'Basic ' + btoa('saikiran:password'));
 
     const httpOptions = {
-        headers: httpHeaders
-
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+        'Access-Control-Allow-Origin': '*'
       }
-    ;
+    };
     const user = {
-      'givenname': this.firstName,
-      'middlename': this.middleName,
-      'familyname': this.lastName,
-      'email': this.email,
-      'usergenderid': this.genderVal,
-      'mobile': this.phone
+      givenname: this.firstName,
+      middlename: this.middleName,
+      familyname: this.lastName,
+      email: this.email,
+      usergenderid: this.genderVal,
+      mobile: this.phone
     };
     this.httpClient.post('/api/UserDetails/userDetail/' + this.id, user, httpOptions).subscribe(
       data => {
         console.log(data);
-        //this.imageUrl = this.usersData.data.dbFile;
+        // this.imageUrl = this.usersData.data.dbFile;
       }
     );
 
@@ -151,17 +157,17 @@ export class UpdateuserComponent implements OnInit {
       }
     ;
     const user = {
-      'address1': this.address1,
-      'address2': this.address2,
-      'city': this.city,
-      'state': this.state,
-      'country': this.country,
-      'zip': this.zip
+      address1: this.address1,
+      address2: this.address2,
+      city: this.city,
+      state: this.state,
+      country: this.country,
+      zip: this.zip
     };
     this.httpClient.post('/api/UserDetails/address/' + this.id, user, httpOptions).subscribe(
       data => {
         console.log(data);
-        //this.imageUrl = this.usersData.data.dbFile;
+        // this.imageUrl = this.usersData.data.dbFile;
       }
     );
 
@@ -182,7 +188,7 @@ export class UpdateuserComponent implements OnInit {
     this.httpClient.post('/api/UserDetails/roles/' + this.id, this.rolesVal, httpOptions).subscribe(
       data => {
         console.log(data);
-        //this.imageUrl = this.usersData.data.dbFile;
+        // this.imageUrl = this.usersData.data.dbFile;
       }
     );
 

@@ -38,7 +38,11 @@ export class CreateuserpasswordComponent implements OnInit, OnDestroy {
     httpHeaders.append('Authorization', 'Basic ' + btoa('saikiran:password'));
 
     const httpOptions = {
-      headers: httpHeaders
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+        'Access-Control-Allow-Origin': '*'
+      }
     };
     this.httpClient.get<any[]>('/api/userSystem/passwordQuestions').subscribe((result) => {
       this.passwordQuestions = result.data;

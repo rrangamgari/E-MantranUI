@@ -9,7 +9,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ImageUploadComponent implements OnInit {
 
-
+  id: string = null;
   fileData: File = null;
   previewUrl: any = null;
   fileUploadProgress: string = null;
@@ -41,9 +41,9 @@ export class ImageUploadComponent implements OnInit {
     }
   }
 
-  id;
 
   onSubmit() {
+
     this.id = this.route.snapshot.queryParamMap.get('userId');
     const formData = new FormData();
     formData.append('file', this.fileData);
@@ -52,7 +52,11 @@ export class ImageUploadComponent implements OnInit {
 
     this.http.post('/api/file/uploadFile/' + this.id, formData, {
       reportProgress: true,
-      observe: 'events'
+      observe: 'events',
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+        'Access-Control-Allow-Origin': '*'
+      }
     })
       .subscribe(events => {
         if (events.type === HttpEventType.UploadProgress) {

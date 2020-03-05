@@ -11,8 +11,8 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleInputType">Event Type*</label>
-        <select (change)="eventTypeSelected(eventTypeVal)" [(ngModel)]='eventTypeVal' class="form-control" id="exampleInputType" name="eventTypeSelect">
+        <label for="eventTypeSelect">Event Type*</label>
+        <select (change)="eventTypeSelected(eventTypeVal)" [(ngModel)]='eventTypeVal' class="form-control" id="eventTypeSelect" name="eventTypeSelect">
           <option disabled value="0">-- Select--</option>
           <option *ngFor="let gen of eventType" value={{gen.eventtypeid}}>{{gen.eventdescription}}</option>
         </select>
@@ -21,7 +21,7 @@
 
       <div class="form-group">
         <label for="hostedBy">Hosted By</label>
-        <input [(ngModel)]="hostedBy" aria-describedby="emailHelp" class="form-control" id="hostedBy" name="firstUser2"
+        <input [(ngModel)]="hostedBy" aria-describedby="emailHelp" class="form-control" id="hostedBy" name="hostedBy"
                placeholder="Hosted By" type="text">
       </div>
 
@@ -35,32 +35,32 @@
       <div class="form-group">
         <label for="exampleInputPhone">Phone</label>
         <input [(ngModel)]="phone" aria-describedby="phoneHelp" class="form-control" id="exampleInputPhone"
-               name="firstUser5" placeholder="Phone" type="phone">
+               name="exampleInputPhone" placeholder="Phone" type="phone">
       </div>
       <div class="form-group">
         <label for="exampleInputAddress">Address</label>
         <input [(ngModel)]="address" aria-describedby="phoneHelp" class="form-control" id="exampleInputAddress"
-               name="firstUser5" placeholder="Address" type="text">
+               name="exampleInputAddress" placeholder="Address" type="text">
 
       </div>
       <div class="row">
         <div class="col-4">
           <input [(ngModel)]="city" aria-describedby="phoneHelp" class="form-control" id="exampleInputCity"
-                 name="firstUser5" placeholder="City" type="text">
+                 name="exampleInputCity" placeholder="City" type="text">
         </div>
         <div class="col-4">
           <input [(ngModel)]="state" aria-describedby="phoneHelp" class="form-control" id="exampleInputState"
-                 name="firstUser5" placeholder="State" type="text">
+                 name="exampleInputState" placeholder="State" type="text">
         </div>
         <div class="col-4">
           <input [(ngModel)]="zip" aria-describedby="phoneHelp" class="form-control" id="exampleInputZip"
-                 name="firstUser5" placeholder="Zip" type="text">
+                 name="exampleInputZip" placeholder="Zip" type="text">
         </div>
       </div>
       <div class="form-group">
         <label for="exampleInputMessage">Message From Host</label>
         <textarea [(ngModel)]="message" class="form-control" id="exampleInputMessage"
-                  name="firstUser5" placeholder="Message" rows="6"></textarea>
+                  name="exampleInputMessage" placeholder="Message" rows="6"></textarea>
       </div>
 
       <!--<button (click)="back()" class="btn btn-primary" type="button"> Back</button>&nbsp;&nbsp;-->

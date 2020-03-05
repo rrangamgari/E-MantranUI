@@ -19,6 +19,7 @@ import { DatabaseViewComponent } from './database-view/database-view.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { MyLayoutComponent } from './my-layout/my-layout.component';
 import { CreateinvitationComponent } from './createinvitation/createinvitation.component';
+import { ViewinvitationComponent } from './viewinvitation/viewinvitation.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { CreateinvitationComponent } from './createinvitation/createinvitation.c
     DatabaseViewComponent,
     ImageUploadComponent,
     MyLayoutComponent,
-    CreateinvitationComponent
+    CreateinvitationComponent,
+    ViewinvitationComponent
 
   ],
   imports: [

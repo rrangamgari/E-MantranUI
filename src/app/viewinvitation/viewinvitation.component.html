@@ -1,0 +1,30 @@
+<!--<img [hidden]="imageLoader" src="./assets/images/tenor.gif" (load)="this.imageLoader = false;" id="loaderImage"/>-->
+<div class="listUser" style="padding: 120px">
+
+  <table class="table table-striped table-responsive-md btn-table" id="listUsers">
+
+
+    <tr class="row">
+      <th class="col-md-2 d-none d-xl-table-cell">Event Title</th>
+      <th class="col-md-2 d-none d-xl-table-cell">Event Type</th>
+      <th class="col-md-2 d-none d-xl-table-cell">Hosted By</th>
+      <th class="col-md-2 d-none d-xl-table-cell">Start Date</th>
+      <th class="col-md-2 d-none d-xl-table-cell">End Date</th>
+      <th class="col-md-2 d-none d-xl-table-cell">Edit / View</th>
+    </tr>
+    <tr *ngFor="let event of eventsData" class="row">
+
+      <td class="col-md-2 d-none d-xl-table-cell">        {{ event.eventtitle }}      </td>
+      <td class="col-md-2 d-none d-xl-table-cell">        {{ event.eventtype.eventdescription }}      </td>
+      <td class="col-md-2 d-none d-xl-table-cell">        {{ event.hostedby }}      </td>
+      <td class="col-md-2 d-none d-xl-table-cell">        {{ event.startdate }}      </td>
+      <td class="col-md-2 d-none d-xl-table-cell">        {{ event.enddate }}      </td>
+      <td class="col-md-2 d-none d-xl-table-cell"><img [queryParams]="{ eventId: event.eventdetailsid }" [routerLink]="['/updateEvent']"
+                                                       alt="Edit"
+                                                       src="./assets/images/edit-file-icon.png"
+                                                       style="cursor:pointer "> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
+        (click)="deleteEvent(event.eventdetailsid)" alt="Delete" src="./assets/images/delete-file-icon.png"
+        style="cursor:pointer "></td>
+    </tr>
+  </table>
+</div>

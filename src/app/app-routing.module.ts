@@ -8,13 +8,16 @@ import {CreateuserpasswordComponent} from './createuserpassword/createuserpasswo
 import {ImageUploadComponent} from './image-upload/image-upload.component';
 import {MyLayoutComponent} from './my-layout/my-layout.component';
 import {CreateinvitationComponent} from './createinvitation/createinvitation.component';
+import {ViewinvitationComponent} from './viewinvitation/viewinvitation.component';
 
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'createNewUser', component: CreateuserpasswordComponent},
-  {path: 'createInvitation', component: CreateinvitationComponent},
+  {path: 'createEvent', component: CreateinvitationComponent},
+  {path: 'updateEvent', component: CreateinvitationComponent},
+  {path: 'viewEvents', component: ViewinvitationComponent},
   {path: 'createUser', component: CreateuserComponent},
   {path: 'updateUser', component: UpdateuserComponent},
   {path: 'listUsers', component: ListusersComponent},

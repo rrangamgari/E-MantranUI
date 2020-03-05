@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {GlobalService} from '../global.service';
 import {HttpClient} from '@angular/common/http';
 
@@ -25,22 +25,24 @@ export class CreateinvitationComponent implements OnInit {
   private city: string;
   private state: string;
   private zip: string;
+  httpOptions = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+      'Access-Control-Allow-Origin': '*'
+    }
+  };
+  private eventId: string;
+  private eventsData: any;
 
-
-  constructor(public  router: Router, private globalService: GlobalService, private httpClient: HttpClient) {
+  constructor(public  router: Router, private globalService: GlobalService, private httpClient: HttpClient, private route: ActivatedRoute,) {
   }
 
   ngOnInit() {
     this.eventTypeVal = '0';
+    this.eventId = this.route.snapshot.queryParamMap.get('eventId');
 
-    const httpOptions = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + localStorage.getItem('access_token'),
-        'Access-Control-Allow-Origin': '*'
-      }
-    };
-    this.httpClient.get<any[]>('/api/eventSystem/eventType', httpOptions).subscribe(result => {
+    this.httpClient.get<any[]>('/api/eventSystem/eventType', this.httpOptions).subscribe(result => {
       // tslint:disable-next-line:prefer-const
       const r = result;
       this.eventType = r.data;
@@ -53,6 +55,25 @@ export class CreateinvitationComponent implements OnInit {
         console.log(r.data[i].eventtypeid);
       }*/
     }, error => console.error(error));
+
+    if (this.eventId != null) {
+      this.httpClient.get('/api/userEvents/event/' + this.eventId, this.httpOptions).subscribe(
+        resp1 => {
+          this.eventsData = resp1.data;
+          this.eventTitle = this.eventsData.eventtitle;
+          this.eventTypeVal = this.eventsData.eventtype.eventtypeid;
+          this.eventDate = this.eventsData.startdate;
+          this.hostedBy = this.eventsData.hostedby;
+          this.phone = this.eventsData.phone;
+          this.address = this.eventsData.addresses.eventaddress;
+          this.city = this.eventsData.addresses.eventcity;
+          this.state = this.eventsData.addresses.eventstate;
+          this.zip = this.eventsData.addresses.eventzip;
+          this.message = this.eventsData.eventmessage;
+
+        }
+      );
+    }
   }
 
   save() {
@@ -63,10 +84,13 @@ export class CreateinvitationComponent implements OnInit {
         'Access-Control-Allow-Origin': '*'
       }
     };
-    alert(this.eventDate);
+    //alert(this.eventDate);
     const user = {
+      eventdetailsid: this.eventId,
       eventtitle: this.eventTitle,
-      eventtype: this.eventTypeVal,
+      eventtype: {
+        eventtypeid: this.eventTypeVal
+      },
       hostedby: this.hostedBy,
       startdate: this.eventDate,
       enddate: this.eventDate,
@@ -86,15 +110,25 @@ export class CreateinvitationComponent implements OnInit {
       attachmentlink: null,
       resharable: true
     };
-    this.httpClient.post('api/userEvents/event', user, httpOptions).subscribe(
-      data => {
-        console.log(data);
-        // tslint:disable-next-line:no-conditional-assignment
-        alert('Event Created.');
-        console.log(localStorage.getItem('passwordAnswer'));
-        // this.imageUrl = this.usersData.data.dbFile;
-      }
-    );
+    if (this.eventId != null) {
+
+      this.httpClient.post('api/userEvents/event', user, httpOptions).subscribe(
+        data => {
+          console.log(data);
+          alert('Event Updated .');
+          this.router.navigate(['viewEvents']);
+        }
+      );
+    } else {
+      this.httpClient.post('api/userEvents/event', user, httpOptions).subscribe(
+        data => {
+          console.log(data);
+          alert('Event Created.');
+          this.router.navigate(['viewEvents']);
+        }
+      );
+    }
+
   }
 
 

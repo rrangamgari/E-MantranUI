@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       console.log('token :' + r.token);
       localStorage.setItem('access_token', r.token);
 
-      this.router.navigate(['createInvitation']);
+      this.router.navigate(['viewEvents']);
     }, error => console.error(error));
     /*if (this.username === 'demo' && this.password === 'demo') {
       this.router.navigate(['createUser']);

@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GlobalService} from '../global.service';
 import {HttpClient} from '@angular/common/http';
@@ -10,7 +9,11 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./createinvitation.component.scss']
 })
 export class CreateinvitationComponent implements OnInit {
-  userDetails: FormGroup;
+  now = new Date();
+  year = this.now.getFullYear();
+  month = this.now.getMonth();
+  day = this.now.getDay();
+  minDate = {year: this.year - 100, month: this.month, day: this.day};
   private eventTypeVal: string;
   private eventType: any[];
   private eventTypeValues: string;

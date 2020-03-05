@@ -26,11 +26,18 @@
       </div>
 
 
-      <div class="form-group">
-        <label for="eventDateInput">Event Date/Time</label>
+      <div class="row">
+        <div class="col-6">
+        <label for="eventDateInput">Event Date</label>
 
         <input [(ngModel)]="eventDate" aria-describedby="emailHelp" class="form-control" id="eventDateInput"
-               name="eventDateInput" placeholder="Event Date" type="date">
+               minDate="minDate" name="eventDateInput" placeholder="Event Date" type="date">
+        </div>
+        <div class="col-6">
+          <label for="eventDateInput">Event Time</label>
+        <input class="form-control" id="appt" max="18:00"
+               min="06:00" name="appt" required type="time">
+        </div>
       </div>
       <div class="form-group">
         <label for="exampleInputPhone">Phone</label>
@@ -78,16 +85,15 @@
             </button>
           </h5>
         </div>
-        <div aria-labelledby="headingOne" class="collapse show" data-parent="#accordionExample"
+        <div aria-labelledby="headingOne" class="collapse" data-parent="#accordionExample"
              id="collapseOne">
           <div class="card-body">
             <img alt="" src="./assets/images/baby.jpg" width="60%"/>
-            <div class="bottom-left">Bottom Left</div>
-            <div class="top-left">Top Left</div>
             <div class="eventTitle" >{{eventTitle}}</div>
-            <div class="eventType" >{{eventTypeValues}}</div>
-            <div class="eventHostedBy">{{hostedBy}}</div>
-            <div class="eventAddress">{{address}}<br>{{city}}&nbsp;&nbsp;&nbsp;{{state}}&nbsp;&nbsp;&nbsp;{{zip}}</div>
+            <div class="eventType" > {{eventTypeValues}} </div>
+            <div class="eventHostedBy">Hosted By :<br> {{hostedBy}}</div>
+            <div class="eventAddress"><div>Location : </div>
+              <div>{{address}}<br>{{city}}&nbsp;&nbsp;&nbsp;{{state}}&nbsp;&nbsp;&nbsp;{{zip}}</div></div>
           </div>
         </div>
       </div>
@@ -103,12 +109,11 @@
         <div aria-labelledby="headingTwo" class="collapse" data-parent="#accordionExample" id="collapseTwo">
           <div class="card-body">
             <img alt="" src="./assets/images/baby1.jpg" width="100%"/>
-            <div class="bottom-left">Bottom Left</div>
-            <div class="top-left">Top Left</div>
             <div class="eventTitle" >{{eventTitle}}</div>
-            <div class="eventType" >{{eventTypeValues}}</div>
-            <div class="eventHostedBy">{{hostedBy}}</div>
-            <div class="eventAddress">{{address}}<br>{{city}}&nbsp;&nbsp;&nbsp;{{state}}&nbsp;&nbsp;&nbsp;{{zip}}</div>
+            <div class="eventType" > {{eventTypeValues}} </div>
+            <div class="eventHostedBy">Hosted By : {{hostedBy}}</div>
+            <div class="eventAddress"><div>Location : </div>
+              <div>{{address}}<br>{{city}}&nbsp;&nbsp;&nbsp;{{state}}&nbsp;&nbsp;&nbsp;{{zip}}</div></div>
           </div>
         </div>
       </div>
@@ -121,13 +126,14 @@
             </button>
           </h5>
         </div>
-        <div aria-labelledby="headingThree" class="collapse" data-parent="#accordionExample" id="collapseThree">
+        <div aria-labelledby="headingThree" class="collapse show" data-parent="#accordionExample" id="collapseThree">
           <div class="card-body">
             <img alt="" src="./assets/images/baby2.jpg" width="100%"/>
             <div class="eventTitleH" >{{eventTitle}}</div>
-            <div class="eventTypeH" >Dear Firstname and Lastname We cordially invite you for My son's First {{eventTypeValues}} Party</div>
-            <div class="eventHostedByH">Hosted By {{hostedBy}}</div>
-            <div class="eventAddressH">Location : {{address}}<br>{{city}}&nbsp;&nbsp;&nbsp;{{state}}&nbsp;&nbsp;&nbsp;{{zip}}</div>
+            <div class="eventTypeH" > {{eventTypeValues}} </div>
+            <div class="eventHostedByH">Hosted By : {{hostedBy}}</div>
+            <div class="eventAddressH"><div>Location : </div>
+              <div>{{address}}<br>{{city}}&nbsp;&nbsp;&nbsp;{{state}}&nbsp;&nbsp;&nbsp;{{zip}}</div></div>
           </div>
         </div>
       </div>

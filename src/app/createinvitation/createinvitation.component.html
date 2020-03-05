@@ -1,48 +1,139 @@
 <div class="row" style="padding: 120px">
-  <div class="col-2 d-none d-sm-table-cell"></div>
+
   <div class="col 6">
     <form class="createUserform">
 
       <div class="form-group">
-        <label for="firstUser1">Event Title*</label>
-        <input [(ngModel)]="firstName" aria-describedby="firstnameHelp" class="form-control" id="firstUser1" name="firstUser1"
+        <label for="eventTitle">Event Title*</label>
+        <input [(ngModel)]="eventTitle" aria-describedby="firstnameHelp" class="form-control" id="eventTitle"
+               name="eventTitle"
                placeholder="Event Title" type="text">
       </div>
 
       <div class="form-group">
         <label for="exampleInputType">Event Type*</label>
-        <select [(ngModel)]='eventTypeVal' class="form-control" id="exampleInputType" name="eventTypeSelect">
-          <option disabled selected="selected" value="0">-- Select--</option>
+        <select (change)="eventTypeSelected(eventTypeVal)" [(ngModel)]='eventTypeVal' class="form-control" id="exampleInputType" name="eventTypeSelect">
+          <option disabled value="0">-- Select--</option>
           <option *ngFor="let gen of eventType" value={{gen.eventtypeid}}>{{gen.eventdescription}}</option>
         </select>
 
       </div>
 
       <div class="form-group">
-        <label for="lastUser1">Hosted By</label>
-        <input [(ngModel)]="lastName" aria-describedby="emailHelp" class="form-control" id="lastUser1" name="firstUser2"
+        <label for="hostedBy">Hosted By</label>
+        <input [(ngModel)]="hostedBy" aria-describedby="emailHelp" class="form-control" id="hostedBy" name="firstUser2"
                placeholder="Hosted By" type="text">
       </div>
 
 
       <div class="form-group">
-        <label for="exampleInputTime">Event Date/Time</label>
+        <label for="eventDateInput">Event Date/Time</label>
 
-        <input [(ngModel)]="email" aria-describedby="emailHelp" class="form-control" id="exampleInputTime"
-               name="firstUser4" placeholder="Email" type="datetime-local">
+        <input [(ngModel)]="eventDate" aria-describedby="emailHelp" class="form-control" id="eventDateInput"
+               name="eventDateInput" placeholder="Event Date" type="date">
       </div>
       <div class="form-group">
         <label for="exampleInputPhone">Phone</label>
         <input [(ngModel)]="phone" aria-describedby="phoneHelp" class="form-control" id="exampleInputPhone"
                name="firstUser5" placeholder="Phone" type="phone">
       </div>
+      <div class="form-group">
+        <label for="exampleInputAddress">Address</label>
+        <input [(ngModel)]="address" aria-describedby="phoneHelp" class="form-control" id="exampleInputAddress"
+               name="firstUser5" placeholder="Address" type="text">
 
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <input [(ngModel)]="city" aria-describedby="phoneHelp" class="form-control" id="exampleInputCity"
+                 name="firstUser5" placeholder="City" type="text">
+        </div>
+        <div class="col-4">
+          <input [(ngModel)]="state" aria-describedby="phoneHelp" class="form-control" id="exampleInputState"
+                 name="firstUser5" placeholder="State" type="text">
+        </div>
+        <div class="col-4">
+          <input [(ngModel)]="zip" aria-describedby="phoneHelp" class="form-control" id="exampleInputZip"
+                 name="firstUser5" placeholder="Zip" type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputMessage">Message From Host</label>
+        <textarea [(ngModel)]="message" class="form-control" id="exampleInputMessage"
+                  name="firstUser5" placeholder="Message" rows="6"></textarea>
+      </div>
 
-      <button (click)="back()" class="btn btn-primary" type="button"> Back</button>&nbsp;&nbsp;
+      <!--<button (click)="back()" class="btn btn-primary" type="button"> Back</button>&nbsp;&nbsp;-->
       <button (click)="save()" class="btn btn-primary" type="submit">Submit</button>
     </form>
   </div>
-  <div class="col-2 d-none d-sm-table-cell"></div>
+  <div class="col-6 container">
+    <div class="accordion" id="accordionExample">
+      <div class="card z-depth-0 bordered">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button aria-controls="collapseOne" aria-expanded="true" class="btn btn-link" data-target="#collapseOne"
+                    data-toggle="collapse" type="button">
+              Preview #1
+            </button>
+          </h5>
+        </div>
+        <div aria-labelledby="headingOne" class="collapse show" data-parent="#accordionExample"
+             id="collapseOne">
+          <div class="card-body">
+            <img alt="" src="./assets/images/baby.jpg" width="60%"/>
+            <div class="bottom-left">Bottom Left</div>
+            <div class="top-left">Top Left</div>
+            <div class="eventTitle" >{{eventTitle}}</div>
+            <div class="eventType" >{{eventTypeValues}}</div>
+            <div class="eventHostedBy">{{hostedBy}}</div>
+            <div class="eventAddress">{{address}}<br>{{city}}&nbsp;&nbsp;&nbsp;{{state}}&nbsp;&nbsp;&nbsp;{{zip}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="card z-depth-0 bordered">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button aria-controls="collapseTwo" aria-expanded="false" class="btn btn-link collapsed"
+                    data-target="#collapseTwo" data-toggle="collapse" type="button">
+              Preview #2
+            </button>
+          </h5>
+        </div>
+        <div aria-labelledby="headingTwo" class="collapse" data-parent="#accordionExample" id="collapseTwo">
+          <div class="card-body">
+            <img alt="" src="./assets/images/baby1.jpg" width="100%"/>
+            <div class="bottom-left">Bottom Left</div>
+            <div class="top-left">Top Left</div>
+            <div class="eventTitle" >{{eventTitle}}</div>
+            <div class="eventType" >{{eventTypeValues}}</div>
+            <div class="eventHostedBy">{{hostedBy}}</div>
+            <div class="eventAddress">{{address}}<br>{{city}}&nbsp;&nbsp;&nbsp;{{state}}&nbsp;&nbsp;&nbsp;{{zip}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="card z-depth-0 bordered">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button aria-controls="collapseThree" aria-expanded="false" class="btn btn-link collapsed"
+                    data-target="#collapseThree" data-toggle="collapse" type="button">
+              Preview #3
+            </button>
+          </h5>
+        </div>
+        <div aria-labelledby="headingThree" class="collapse" data-parent="#accordionExample" id="collapseThree">
+          <div class="card-body">
+            <img alt="" src="./assets/images/baby2.jpg" width="100%"/>
+            <div class="eventTitleH" >{{eventTitle}}</div>
+            <div class="eventTypeH" >Dear Firstname and Lastname We cordially invite you for My son's First {{eventTypeValues}} Party</div>
+            <div class="eventHostedByH">Hosted By {{hostedBy}}</div>
+            <div class="eventAddressH">Location : {{address}}<br>{{city}}&nbsp;&nbsp;&nbsp;{{state}}&nbsp;&nbsp;&nbsp;{{zip}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 <div class="modal" id="myModal">
   <div class="modal-dialog">

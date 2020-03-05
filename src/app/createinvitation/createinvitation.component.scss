@@ -1,0 +1,121 @@
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  text-align: center;
+  color: red;
+  width: 100%;
+  height: 100%;
+  color: #17a2b8;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
+  font-size: 26px;
+  color: #1c7430;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Top right text */
+.eventTitle {
+  position: absolute;
+  bottom: 120px;
+  right: 16px;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
+  font-size: 30px;
+  color: #721c24;
+}
+
+.eventType {
+  position: absolute;
+  bottom: 90px;
+  right: 16px;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
+  font-size: 26px;
+}
+.eventHostedBy {
+  position: absolute;
+  bottom: 70px;
+  right: 16px;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
+  font-size: 26px;
+}
+.eventAddress {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
+  font-size: 20px;
+
+}
+.eventTitleH {
+  position: absolute;
+  top: 140px;
+  right: 26px;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
+  font-size: 25px;
+  color: #721c24;
+}
+
+.eventTypeH {
+  position: absolute;
+  top: 180px;
+  right: 26px;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
+  font-size: 20px;
+}
+.eventHostedByH {
+  position: absolute;
+  top: 220px;
+  right: 26px;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
+  font-size: 20px;
+}
+.eventAddressH {
+  position: absolute;
+  top: 280px;
+  right: 26px;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
+  font-size: 16px;
+
+}

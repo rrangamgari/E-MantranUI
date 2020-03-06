@@ -3,16 +3,25 @@
 
 
   <tr class="row">
-    <td align="right" width="100%"><button (click)="login()" class="btn btn-primary" type="submit">Create User</button>&nbsp;&nbsp;
-      <button (click)="createUser()" class="btn btn-secondary" type="submit">Register</button></td>
+    <td align="right" width="100%">&nbsp;&nbsp;
+      <button (click)="createUser()" class="btn btn-secondary" type="submit">Upload Contacts</button></td>
   </tr>
   <tr class="row">
     <th width="15%">First Name</th>
     <th width="15%">Last Name</th>
     <th width="25%">Email</th>
-    <th width="15%">Phone</th>
+    <th width="15%">Primary Phone</th>
     <th width="15%">Secondary Phone</th>
     <th width="15%">Edit</th>
+  </tr>
+  <tr class="row">
+    <td width="15%">        <input [(ngModel)]="firstName" type="text">      </td>
+    <td width="15%">        <input [(ngModel)]="lastName" type="text">      </td>
+    <td width="25%">        <input [(ngModel)]="email" type="text">    </td>
+    <td width="15%">        <input [(ngModel)]="primaryPhone" type="phone">      </td>
+    <td width="15%">        <input [(ngModel)]="secondaryPhone" type="phone">      </td>
+    <td width="15%"><button (click)="addContact()" class="btn btn-primary" type="submit">Add Contact</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
   </tr>
   <tr *ngFor="let guest of eventsMembersData" class="row">
 
@@ -26,7 +35,7 @@
       src="./assets/images/edit-file-icon.png"
       style="cursor:pointer "> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <img  alt="Delete" src="./assets/images/delete-file-icon.png"
-            style="cursor:pointer ">
+            (click)="deleteContact(guest.eventmemberid)" style="cursor:pointer ">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </td>
   </tr>

@@ -8,6 +8,11 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ViewcontactsComponent implements OnInit {
   eventsMembersData;
+  firstName;
+  lastName;
+  email;
+  primaryPhone;
+  secondaryPhone;
   httpOptions = {
     headers: {
       'Content-Type': 'application/json',
@@ -20,6 +25,10 @@ export class ViewcontactsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadContact();
+  }
+
+  loadContact() {
     this.httpClient.get('/api/userEvents/userguestlist', this.httpOptions).subscribe(
       resp => {
         this.eventsMembersData = resp.data;
@@ -27,4 +36,31 @@ export class ViewcontactsComponent implements OnInit {
     );
   }
 
+  deleteContact(id) {
+    this.httpClient.delete('/api/userEvents/userguest/' + id, this.httpOptions).subscribe(
+      resp => {
+        if (resp.data) {
+          this.loadContact();
+        }
+      }
+    );
+  }
+
+  addContact() {
+    // tslint:disable-next-line:label-position
+    var user = {
+      firstname: this.firstName,
+      lastname: this.lastName,
+      email: this.email,
+      primaryPhone: this.primaryPhone,
+      secondaryPhone: this.secondaryPhone
+    }
+    this.httpClient.post('/api/userEvents/userguest/0', user, this.httpOptions).subscribe(
+      resp => {
+        if (resp.data) {
+          this.loadContact();
+        }
+      }
+    );
+  }
 }

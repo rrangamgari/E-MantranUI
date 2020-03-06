@@ -9,6 +9,7 @@ import {ImageUploadComponent} from './image-upload/image-upload.component';
 import {MyLayoutComponent} from './my-layout/my-layout.component';
 import {CreateinvitationComponent} from './createinvitation/createinvitation.component';
 import {ViewinvitationComponent} from './viewinvitation/viewinvitation.component';
+import {ViewcontactsComponent} from './viewcontacts/viewcontacts.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'createNewUser', component: CreateuserpasswordComponent},
   {path: 'createEvent', component: CreateinvitationComponent},
   {path: 'updateEvent', component: CreateinvitationComponent},
+  {path: 'viewContacts', component: ViewcontactsComponent},
   {path: 'viewEvents', component: ViewinvitationComponent},
   {path: 'createUser', component: CreateuserComponent},
   {path: 'updateUser', component: UpdateuserComponent},

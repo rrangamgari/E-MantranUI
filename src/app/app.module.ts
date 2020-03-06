@@ -20,6 +20,7 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { MyLayoutComponent } from './my-layout/my-layout.component';
 import { CreateinvitationComponent } from './createinvitation/createinvitation.component';
 import { ViewinvitationComponent } from './viewinvitation/viewinvitation.component';
+import { ViewcontactsComponent } from './viewcontacts/viewcontacts.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ViewinvitationComponent } from './viewinvitation/viewinvitation.compone
     ImageUploadComponent,
     MyLayoutComponent,
     CreateinvitationComponent,
-    ViewinvitationComponent
+    ViewinvitationComponent,
+    ViewcontactsComponent
 
   ],
   imports: [

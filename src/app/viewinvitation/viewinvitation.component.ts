@@ -9,6 +9,8 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ViewinvitationComponent implements OnInit {
   eventsData;
+  eventsMembersData;
+  eventsTitle;
   httpOptions = {
     headers: {
       'Content-Type': 'application/json',
@@ -50,7 +52,18 @@ export class ViewinvitationComponent implements OnInit {
     this.httpClient.get('/api/userEvents/events', this.httpOptions).subscribe(
       resp => {
         this.eventsData = resp.data;
+
       }
     );
+  }
+
+  public listGuests(id, title) {
+    this.eventsTitle = title;
+    this.httpClient.get('/api/userEvents/guestlist/' + id, this.httpOptions).subscribe(
+      resp => {
+        this.eventsMembersData = resp.data;
+      }
+    );
+
   }
 }

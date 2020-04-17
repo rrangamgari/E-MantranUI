@@ -10,10 +10,11 @@ import {MyLayoutComponent} from './my-layout/my-layout.component';
 import {CreateinvitationComponent} from './createinvitation/createinvitation.component';
 import {ViewinvitationComponent} from './viewinvitation/viewinvitation.component';
 import {ViewcontactsComponent} from './viewcontacts/viewcontacts.component';
+import {WelcomeComponent} from "./welcome/welcome.component";
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', component: LoginComponent},
+  {path: '', pathMatch: 'full', component: WelcomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'createNewUser', component: CreateuserpasswordComponent},
   {path: 'createEvent', component: CreateinvitationComponent},

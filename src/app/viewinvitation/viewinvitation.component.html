@@ -1,64 +1,87 @@
 <!--<img [hidden]="imageLoader" src="./assets/images/tenor.gif" (load)="this.imageLoader = false;" id="loaderImage"/>-->
 <div class="listUser" style="padding: 120px">
+  <tr>
+    <td width="20%">
+      <table class="table table-striped table-responsive-md btn-table" id="listUsers">
 
-  <table class="table table-striped table-responsive-md btn-table" id="listUsers">
 
+        <tr class="row">
+          <th class="col-md-4 d-none d-xl-table-cell">Events</th>
+          <!--<th class="col-md-2 d-none d-xl-table-cell">Event Type</th>
+          <th class="col-md-2 d-none d-xl-table-cell">Hosted By</th>
+          <th class="col-md-2 d-none d-xl-table-cell">Start Date</th>
+          <th class="col-md-2 d-none d-xl-table-cell">End Date</th>
+          <th class="col-md-2 d-none d-xl-table-cell">Edit / View</th>-->
+        </tr>
+        <tr *ngFor="let event of eventsData" class="row">
 
-    <tr class="row">
-      <th class="col-md-2 d-none d-xl-table-cell">Event Title</th>
-      <th class="col-md-2 d-none d-xl-table-cell">Event Type</th>
-      <th class="col-md-2 d-none d-xl-table-cell">Hosted By</th>
-      <th class="col-md-2 d-none d-xl-table-cell">Start Date</th>
-      <th class="col-md-2 d-none d-xl-table-cell">End Date</th>
-      <th class="col-md-2 d-none d-xl-table-cell">Edit / View</th>
-    </tr>
-    <tr *ngFor="let event of eventsData" class="row">
+          <td class="col-md-4 d-none d-xl-table-cell"
+              (click)="listGuests(event.eventdetailsid, event.eventtitle)">        {{ event.eventtitle }}      </td>
+          <!--<td class="col-md-2 d-none d-xl-table-cell">        {{ event.eventtype.eventdescription }}      </td>
+          <td class="col-md-2 d-none d-xl-table-cell">        {{ event.hostedby }}      </td>
+          <td class="col-md-2 d-none d-xl-table-cell">        {{ event.startdate }}      </td>
+          <td class="col-md-2 d-none d-xl-table-cell">        {{ event.enddate }}      </td>
+          <td class="col-md-2 d-none d-xl-table-cell"><img [queryParams]="{ eventId: event.eventdetailsid }"
+                                                           [routerLink]="['/updateEvent']"
+                                                           alt="Edit"
+                                                           src="./assets/images/edit-file-icon.png"
+                                                           style="cursor:pointer "> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <img (click)="deleteEvent(event.eventdetailsid)" alt="Delete" src="./assets/images/delete-file-icon.png"
+                 style="cursor:pointer ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <img (click)="listGuests(event.eventdetailsid, event.eventtitle)" alt="View Guest List"
+                 src="./assets/images/view-file-icon.png" style="cursor:pointer "></td>-->
+        </tr>
+      </table>
+    </td>
+    <td width="70%">
+      <table class="table table-striped table-responsive-md btn-table" id="listGuests" width="100%">
 
-      <td class="col-md-2 d-none d-xl-table-cell">        {{ event.eventtitle }}      </td>
-      <td class="col-md-2 d-none d-xl-table-cell">        {{ event.eventtype.eventdescription }}      </td>
-      <td class="col-md-2 d-none d-xl-table-cell">        {{ event.hostedby }}      </td>
-      <td class="col-md-2 d-none d-xl-table-cell">        {{ event.startdate }}      </td>
-      <td class="col-md-2 d-none d-xl-table-cell">        {{ event.enddate }}      </td>
-      <td class="col-md-2 d-none d-xl-table-cell"><img [queryParams]="{ eventId: event.eventdetailsid }"
-                                                       [routerLink]="['/updateEvent']"
-                                                       alt="Edit"
-                                                       src="./assets/images/edit-file-icon.png"
-                                                       style="cursor:pointer "> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img (click)="deleteEvent(event.eventdetailsid)" alt="Delete" src="./assets/images/delete-file-icon.png"
-             style="cursor:pointer ">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img (click)="listGuests(event.eventdetailsid, event.eventtitle)" alt="View Guest List"
-             src="./assets/images/view-file-icon.png" style="cursor:pointer "></td>
-    </tr>
-  </table>
-  <table class="table table-striped table-responsive-md btn-table" id="listGuests">
+        <h1 style="color: #3f51b5">{{eventsTitle}}</h1>
+        <tr class="row" width="100%">
+          <th width="25%" style="background: #1c7430;color: #d1ecf1">Track</th>
+          <th width="25%" style="background: #6c757d;color: #d1ecf1">Add Guests</th>
+          <th width="25%" style="background: #6c757d;color: #d1ecf1">Message</th>
+          <th width="25%" style="background: #6c757d;color: #d1ecf1">Gallery</th>
+        </tr>
+        <tr class="row" width="100%">
+          <th width="25%">Attending</th>
+          <th width="25%">Tentative</th>
+          <th width="25%">Not Attending</th>
+          <th width="25%">Awaiting Response</th>
+        </tr>
+        <tr class="row" width="100%">
+          <td width="25%">4 Adults | 4 Kids</td>
+          <td width="25%">2 Adults | 2 Kids</td>
+          <td width="25%">0 Adults | 0 Kids</td>
+          <td width="25%">0 Adults | 0 Kids</td>
+        </tr>
+        <tr class="row" width="100%">
+          <th width="20%">Name</th>
+          <th width="30%">Email</th>
+          <th width="20%">Phone</th>
+          <th width="10%">Status</th>
+          <th width="10%">Head Count</th>
+          <th width="10%">Edit</th>
+        </tr>
+        <tr *ngFor="let guest of eventsMembersData" class="row">
 
-    <h1 style="color: #3f51b5">{{eventsTitle}}</h1>
-    <tr class="row">
-      <th width="15%">First Name</th>
-      <th width="15%">Last Name</th>
-      <th width="30%">Email</th>
-      <th width="10%">Phone</th>
-      <th width="10%">Status</th>
-      <th width="10%">Head Count</th>
-      <th width="10%">Edit</th>
-    </tr>
-    <tr *ngFor="let guest of eventsMembersData" class="row">
-
-      <td width="15%">        {{ guest.eventMembers.firstname }}      </td>
-      <td width="15%">        {{ guest.eventMembers.lastname }}      </td>
-      <td width="25%">        {{ guest.eventMembers.email }}      </td>
-      <td width="15%">        {{ guest.eventMembers.primaryPhone }}      </td>
-      <td width="10%">        {{ guest.status }}      </td>
-      <td width="10%">        {{ guest.headcount }}      </td>
-      <td width="10%"><img
-        alt="Edit"
-        src="./assets/images/edit-file-icon.png"
-        style="cursor:pointer "> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img  alt="Delete" src="./assets/images/delete-file-icon.png"
-             style="cursor:pointer ">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      </td>
-    </tr>
-  </table>
+          <td width="20%">        {{ guest.eventMembers.firstname }} &nbsp;
+            {{ guest.eventMembers.lastname }}      </td>
+          <td width="30%">        {{ guest.eventMembers.email }}      </td>
+          <td width="20%">        {{ guest.eventMembers.primaryPhone }}      </td>
+          <td width="10%">        {{ guest.status }}      </td>
+          <td width="10%">        {{ guest.headcount }}      </td>
+          <td width="10%"><img
+            alt="Edit"
+            src="./assets/images/edit-file-icon.png"
+            style="cursor:pointer "> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <img alt="Delete" src="./assets/images/delete-file-icon.png"
+                 style="cursor:pointer ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
 </div>

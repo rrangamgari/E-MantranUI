@@ -21,6 +21,7 @@ import { MyLayoutComponent } from './my-layout/my-layout.component';
 import { CreateinvitationComponent } from './createinvitation/createinvitation.component';
 import { ViewinvitationComponent } from './viewinvitation/viewinvitation.component';
 import { ViewcontactsComponent } from './viewcontacts/viewcontacts.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ViewcontactsComponent } from './viewcontacts/viewcontacts.component';
     MyLayoutComponent,
     CreateinvitationComponent,
     ViewinvitationComponent,
-    ViewcontactsComponent
+    ViewcontactsComponent,
+    WelcomeComponent
 
   ],
   imports: [

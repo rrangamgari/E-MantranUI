@@ -77,6 +77,27 @@
   <div class="col-6 container">
     <div class="accordion" id="accordionExample">
       <div class="card z-depth-0 bordered">
+        <div class="card-header" id="headingZero">
+          <h5 class="mb-0">
+            <button aria-controls="collapseOne" aria-expanded="true" class="btn btn-link" data-target="#collapseOne"
+                    data-toggle="collapse" type="button">
+              I have my own Card
+            </button>
+          </h5>
+        </div>
+        <div aria-labelledby="headingOne" class="collapse" data-parent="#accordionExample"
+             id="collapseOne">
+          <div class="card-body">
+            <img alt="" src="./assets/images/baby.jpg" width="60%"/>
+            <div class="eventTitle" >{{eventTitle}}</div>
+            <div class="eventType" > {{eventTypeValues}} </div>
+            <div class="eventHostedBy">Hosted By :<br> {{hostedBy}}</div>
+            <div class="eventAddress"><div>Location : </div>
+              <div>{{address}}<br>{{city}}&nbsp;&nbsp;&nbsp;{{state}}&nbsp;&nbsp;&nbsp;{{zip}}</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card z-depth-0 bordered">
         <div class="card-header" id="headingOne">
           <h5 class="mb-0">
             <button aria-controls="collapseOne" aria-expanded="true" class="btn btn-link" data-target="#collapseOne"
@@ -164,3 +185,4 @@
     </div>
   </div>
 </div>
+

@@ -1,0 +1,27 @@
+.carousel.slide{
+  #max-width: 1600px; //the largest you want the image to stretch
+  #min-width: 900px; //the "container" width
+  overflow: hidden;
+}
+.carousel-inner{
+  #width: 1600px;
+  #height: 500px;
+  #left: 50%;
+  margin-top: -150px;
+}
+
+/*
+.carousel-item{
+  #width: 1600px;
+  height: 500px;
+  #left: 50%;
+  #margin-top: -150px;
+}
+
+*/
+
+video {
+  /* override other styles to make responsive */
+  width: 100%    !important;
+  height: auto   !important;
+}

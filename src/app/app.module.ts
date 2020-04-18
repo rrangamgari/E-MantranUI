@@ -1,6 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
@@ -14,14 +16,16 @@ import {HttpClientModule} from '@angular/common/http';
 import {CreateuserpasswordComponent} from './createuserpassword/createuserpassword.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {GlobalService} from './global.service';
-import { TreeViewComponent } from './tree-view/tree-view.component';
-import { DatabaseViewComponent } from './database-view/database-view.component';
-import { ImageUploadComponent } from './image-upload/image-upload.component';
-import { MyLayoutComponent } from './my-layout/my-layout.component';
-import { CreateinvitationComponent } from './createinvitation/createinvitation.component';
-import { ViewinvitationComponent } from './viewinvitation/viewinvitation.component';
-import { ViewcontactsComponent } from './viewcontacts/viewcontacts.component';
-import { WelcomeComponent } from './welcome/welcome.component';
+import {TreeViewComponent} from './tree-view/tree-view.component';
+import {DatabaseViewComponent} from './database-view/database-view.component';
+import {ImageUploadComponent} from './image-upload/image-upload.component';
+import {MyLayoutComponent} from './my-layout/my-layout.component';
+import {CreateinvitationComponent} from './createinvitation/createinvitation.component';
+import {ViewinvitationComponent} from './viewinvitation/viewinvitation.component';
+import {ViewcontactsComponent} from './viewcontacts/viewcontacts.component';
+import {WelcomeComponent} from './welcome/welcome.component';
+
+import {SpinnerComponent} from './shared/spinner.component';
 
 
 @NgModule({
@@ -40,15 +44,17 @@ import { WelcomeComponent } from './welcome/welcome.component';
     CreateinvitationComponent,
     ViewinvitationComponent,
     ViewcontactsComponent,
-    WelcomeComponent
-
+    WelcomeComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AlertModule.forRoot(),
     HttpClientModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [GlobalService],
   bootstrap: [AppComponent]

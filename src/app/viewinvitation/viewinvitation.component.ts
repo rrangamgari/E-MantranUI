@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import { NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-viewinvitation',
@@ -11,6 +12,8 @@ export class ViewinvitationComponent implements OnInit {
   eventsData;
   eventsMembersData;
   eventsTitle;
+  currentJustify = 'justified';
+  currentOrientation = 'horizontal';
   httpOptions = {
     headers: {
       'Content-Type': 'application/json',
